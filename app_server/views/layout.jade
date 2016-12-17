@@ -3,6 +3,7 @@ html
     head
       meta(name='viewport', content='width=device-width, initial-scale=1.0')
       title= title
+      link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
       link(rel='stylesheet', href='/bootstrap/css/amelia.bootstrap.min.css')
       link(rel='stylesheet', href='/stylesheets/style.css')
     body
@@ -23,9 +24,10 @@ html
             block content
 
         footer
-            .row
-                .col-xs-12.col-sm-12.col-md-12.col-lg-12
-                    small &copy; Vin&iacute;icius Marcili 2017
+            .container-fluid
+                .row
+                    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+                        small &copy; Vin&iacute;icius Marcili 2017
 
         script(src='/javascripts/jquery.min.js')
         script(src='/bootstrap/js/bootstrap.min.js')
