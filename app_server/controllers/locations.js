@@ -16,9 +16,9 @@ module.exports.homeList = function (req, res) {
                 address: '125 DESCUBRA, Reading, RG6 1PS',
                 rating: 3,
                 facilities: [
-                    'Hot Drinks',
+                    'Lolzinho',
                     'Food',
-                    'Premium Wifi'
+                    'PC MONSTRO'
                 ],
                 distance: '100m'
             },
@@ -49,7 +49,62 @@ module.exports.homeList = function (req, res) {
 
 /* GET 'Location info' page */
 module.exports.locationInfo = function (req, res) {
-    res.render('location-info', {title: 'Location Info'});
+    res.render('location-info', {
+        title: 'Starcups',
+        pageHeader: {
+            title: 'Starcups'
+        },
+        sidebar: {
+            context: 'is on Loc8r because EU QUERO',
+            callToAction: 'If you\'ve been and you like it - or if you don\'t - please fuck yourself.'
+        },
+        location: {
+            name: 'Starcups',
+            address: '125 Descubra Street, Reading, RG6 1PS',
+            rating: 4,
+            facilities: [
+                'Lolzinho',
+                'Food',
+                'PC MONSTRO'
+            ],
+            coords: {
+                lat: -23.6530225,
+                lng: -46.6041381
+            },
+            openingTimes: [
+                {
+                    days: 'Monday - Friday',
+                    opening: '7:00am',
+                    closing: '7:00pm',
+                    closed: false
+                },
+                {
+                    days: 'Saturday',
+                    opening: '8:00am',
+                    closing: '5:00pm',
+                    closed: false
+                },
+                {
+                    days: 'Sunday',
+                    closed: true
+                }
+            ],
+            reviews: [
+                {
+                    author: 'Descubra',
+                    rating: 5,
+                    timestamp: '25 December 2016',
+                    reviewText: "Quem deveria estar fazendo isso não é o Soap?"
+                },
+                {
+                    author: 'Grande Cervo',
+                    rating: 3,
+                    timestamp: '24 Descubra 1900',
+                    reviewText: "Découvrez"
+                }
+            ]
+        }
+    });
 };
 
 /* GET 'home' page */
