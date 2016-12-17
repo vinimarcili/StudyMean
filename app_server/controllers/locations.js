@@ -109,5 +109,10 @@ module.exports.locationInfo = function (req, res) {
 
 /* GET 'home' page */
 module.exports.addReview = function (req, res) {
-    res.render('locations-review-form', {title: 'Add review'});
+    res.render('locations-review-form', {
+        title: 'Review Starcups on Loc8r',
+        pageHeader: {
+            title: 'Review Starcups'
+        }
+    });
 };
