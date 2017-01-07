@@ -3,6 +3,11 @@ var mongoose = require('mongoose'),
     dbURI = 'mongodb://localhost/Loc8r',
     gracefulShutdown;
 
+/* Verificação se o NODE está em produção para trocar a conexão */
+if(process.env.NODE_ENV === "production"){
+    dbURI = process.env.MONGOLAB_URI;
+}
+
 mongoose.connect(dbURI);
 
 /* Mensagens de conexão com o MongoDB */
