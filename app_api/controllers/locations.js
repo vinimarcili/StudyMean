@@ -18,12 +18,8 @@ module.exports.locationsCreate = function (req, res) {
 module.exports.locationsReadOne = function(req, res) {
     console.log('Finding location details', req.params);
     if (req.params && req.params.locationid) {
-        var  id = new mongoose.Types.ObjectId(req.params.locationid);
-
-        console.log('ID: '+id);
-
         Loc
-            .findById(id)
+            .findById(req.params.locationid)
             .exec(function(err, location) {
                 if (!location) {
                     sendJSONresponse(res, 404, {
