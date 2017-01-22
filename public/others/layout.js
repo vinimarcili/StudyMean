@@ -1,45 +1,48 @@
 db.locations.save({
-    name: 'Garrafa',
-    address: 'Rio, 987',
+    name: 'Comida',
+    address: 'Ali do lado, 456',
     rating: 4,
     facilities: [
-        'H2O',
-        'H2O com Gás'
+        'Mim Acher',
+        'Descubra',
+        'Didico'
     ],
     coords: [
-        -46.5781567,
-        -23.6176051
+        -46.5781667,
+        -23.6176151
     ],
     openingTimes: [
         {
-            days: 'Terça - Sexta',
-            opening: '10:00',
-            closing: '20:00',
+            days: 'Segunda - Sexta',
+            opening: '09:00',
+            closing: '18:00',
             closed: false
         },{
             days: 'Sabado',
-            opening: '8:00',
-            closing: '20:00',
+            opening: '9:00',
+            closing: '22:00',
             closed: false
         },{
             days: 'Domingo',
-            closed: true
+            opening: '12:00',
+            closing: '22: 00',
+            closed: false
         }
     ],
     reviews : [
         {
-            "author" : "Gibão",
-            "id" : ObjectId(),
-            "rating" : 0,
-            "timestamp" : new Date("Jan 13, 2017"),
-            "reviewText" : "Não gostei, não tem alcool"
+            "author" : "Ave",
+            "_id" : ObjectId(),
+            "rating" : 5,
+            "timestamp" : new Date("Jan 07, 2017"),
+            "reviewText" : "Ué"
         },
         {
-            "author" : "Vitão",
-            "id" : ObjectId(),
-            "rating" : 1,
+            "author" : "Tetinha",
+            "_id" : ObjectId(),
+            "rating" : 3,
             "timestamp" : new Date("Jan 07, 2017"),
-            "reviewText" : "Não gostei, não tem Coca"
+            "reviewText" : "Comi pra caralho"
         }
     ]
 })

@@ -8,6 +8,7 @@ if(process.env.NODE_ENV === "production"){
     dbURI = process.env.MONGOLAB_URI;
 }
 
+mongoose.Promise = global.Promise;
 mongoose.connect(dbURI);
 
 /* Mensagens de conexão com o MongoDB */
