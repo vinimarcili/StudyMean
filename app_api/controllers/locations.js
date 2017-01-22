@@ -1,3 +1,6 @@
+var mongoose = require('mongoose'),
+    Loc = mongoose.model('Location');
+
 /* Função para criar uma resposta padrão dos controladores */
 var sendJsonResponde = function(res, status, content) {
     res.status(status);
