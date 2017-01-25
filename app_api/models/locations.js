@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 var reviewSchema = new mongoose.Schema({
     author: {
-        type: String
+        type: String,
+        required: true
     },
     rating: {
         type: Number,
@@ -55,7 +56,8 @@ var locationSchema = new mongoose.Schema({
     },
     coords: {
         type: [Number],
-        index: '2dsphere'
+        index: '2dsphere',
+        required: true
     },
     openingTimes: {
         type: [openingTimeSchema]
