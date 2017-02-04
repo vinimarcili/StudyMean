@@ -6,7 +6,9 @@ block content
             h1= pageHeader.title
     .row
         .col-xs-12.col-sm-12.col-md-12.col-lg-12
-            form.form-horizontal(action='/location', method='get', role='form')
+            form#addReview.form-horizontal(action='', method='post', role='form')
+                - if (error == "val")
+                    .alert.alert-danger(role="alert") Todos os campos são obrigatórios.
                 .form-group
                     label.col-xs-10.col-sm-2.col-md-2.col-lg-2.control-label(for='name') Name
                     .col-xs-12.col-sm-10.col-md-10.col-lg-10
