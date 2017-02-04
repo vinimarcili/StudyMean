@@ -31,6 +31,25 @@ var _formatDistance = function(distance){
     }
 };
 
+/* Errors */
+var _showError = function(req, res, status){
+    var title,
+        content;
+
+    if(status === 404){
+        title = "404, página não encontrada";
+        content = "Parece que não encontramos o que você queria :/";
+    } else {
+        title = status + ", deu ruim";
+        content = "DESCUBRA";
+    }
+    res.status(status);
+    res.render('generic-text',{
+       title: title,
+       content: content
+    });
+};
+
 /* render 'home' page */
 var renderHomepage = function(req, res, responseBody){
     var message;
@@ -93,64 +112,51 @@ module.exports.homeList = function (req, res) {
     );
 };
 
-/* GET 'Location info' page */
-module.exports.locationInfo = function (req, res) {
+/* render 'Location info' page */
+var renderDetailPage = function(req, res, locDetail){
     res.render('location-info', {
-        title: 'Starcups',
+        title: locDetail.name,
         pageHeader: {
-            title: 'Starcups'
+            title: locDetail.name
         },
         sidebar: {
             context: 'is on Loc8r because EU QUERO',
             callToAction: 'If you\'ve been and you like it - or if you don\'t - please fuck yourself.'
         },
-        location: {
-            name: 'Starcups',
-            address: '125 Descubra Street, Reading, RG6 1PS',
-            rating: 4,
-            facilities: [
-                'Lolzinho',
-                'Food',
-                'PC MONSTRO'
-            ],
-            coords: {
-                lat: -23.6530225,
-                lng: -46.6041381
-            },
-            openingTimes: [
-                {
-                    days: 'Monday - Friday',
-                    opening: '7:00am',
-                    closing: '7:00pm',
-                    closed: false
-                },
-                {
-                    days: 'Saturday',
-                    opening: '8:00am',
-                    closing: '5:00pm',
-                    closed: false
-                },
-                {
-                    days: 'Sunday',
-                    closed: true
-                }
-            ],
-            reviews: [
-                {
-                    author: 'Descubra',
-                    rating: 5,
-                    timestamp: '25 December 2016',
-                    reviewText: "Quem deveria estar fazendo isso não é o Soap?"
-                },
-                {
-                    author: 'Grande Cervo',
-                    rating: 3,
-                    timestamp: '24 Descubra 1900',
-                    reviewText: "Découvrez"
-                }
-            ]
-        }
+        location: locDetail
     });
+};
+
+/* GET 'Location info' page */
+module.exports.locationInfo = function (req, res) {
+    var requestOptions,
+        path;
+
+    path = "/api/locations/" + req.params.locationid;
+
+    requestOptions = {
+        url     : apiOptions.server + path,
+        method  : "GET",
+        json    : {}
+    };
+
+    request(
+        requestOptions,
+        function(err, response, body){
+            var data= body;
+
+            if(response.statusCode == 200) {
+                data.coords = {
+                    lng: body.coords[0],
+                    lat: body.coords[1]
+                };
+
+                renderDetailPage(req, res, data);
+            } else {
+                _showError(req, res, response.statusCode);
+            }
+        }
+    );
 };
 
 /* GET 'home' page */

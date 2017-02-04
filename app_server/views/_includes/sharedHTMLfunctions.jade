@@ -1,7 +1,16 @@
 // Função que conta a quantidade de estrelas dadas até 5
 mixin outputRating(rating)
-    - for (var i = 1; i <= rating; i++)
+    - for(var i = 1; i <= rating; i++)
         span.glyphicon.glyphicon-star
-    - for (i = rating; i < 5; i++)
+    - for(i = rating; i < 5; i++)
         span.glyphicon.glyphicon-star-empty
 
+// Função para formatar datas
+mixin formatDate(dateString)
+    - var date = new Date(dateString);
+    - var monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    - var d = date.getDate();
+    - var m = monthNames[date.getMonth()];
+    - var y = date.getFullYear();
+    - var output = d + " " + m + " " + y;
+    =output
