@@ -4,6 +4,15 @@
 }
 /* Header */
 
+/* Filter */
+#filter{
+    margin: 0 0 0 4px;
+    padding: 0 10px;
+    color: black;
+    border-radius: 5px;
+}
+/* Filter */
+
 /* Review Page */
 .review{
     padding-bottom: 5px;
