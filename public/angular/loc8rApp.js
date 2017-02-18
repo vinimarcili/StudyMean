@@ -1,6 +1,3 @@
-angular.module('loc8rApp', []);
-
-
 /* Verify if is Number */
 var _isNumeric = function(n){
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -54,8 +51,13 @@ var loc8rData = function($http){
         return $http.get('/api/locations?lng='+ lng +'&lat=' +lat+ '&maxDistance=10000');
     };
 
+    var locationById = function(locationid){
+        return $http.get('/api/locations/' + locationid);
+    };
+
     return {
-        locationByCoords : locationByCoords
+        locationByCoords : locationByCoords,
+        locationById : locationById
     };
 };
 
@@ -100,7 +102,7 @@ var locationListCtrl = function($scope, loc8rData, geoLocation){
 };
 
 angular
-    .module('loc8rApp')
+    .module('loc8rApp' )
     .controller('locationListCtrl', locationListCtrl)
     .filter('formatDistance', formatDistance)
     .directive('ratingStars', ratingStars)

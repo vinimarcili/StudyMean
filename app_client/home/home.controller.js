@@ -2,6 +2,10 @@
     var homeCtrl = function($scope, loc8rData, geolocation){
         var vm = this;
 
+        if(window.location.pathname !== '/'){
+            window.location.href = '/#' + window.location.pathname;
+        }
+
         vm.pageHeader = {
             title: 'Loc8r',
             strapline: 'Aqui é bodybuilder PORRA'
