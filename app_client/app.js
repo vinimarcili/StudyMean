@@ -1,7 +1,7 @@
 (function(){
-    angular.module('loc8rApp', ['ngRoute', 'ngSanitize']);
+    angular.module('loc8rApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap']);
 
-    var config = function($routeProvider, $locationProvider){
+    var config = function($routeProvider, $locationProvider, $qProvider){
         $routeProvider
             .when('/',{
                 templateUrl: 'home/home.view.html',
@@ -24,9 +24,11 @@
             enabled: true,
             requireBase: false
         });
+
+        $qProvider.errorOnUnhandledRejections(false);
     };
 
     angular
         .module('loc8rApp')
-        .config(['$routeProvider', '$locationProvider', config]);
+        .config(['$routeProvider', '$locationProvider', '$qProvider', config]);
 })();
