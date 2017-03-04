@@ -67,6 +67,15 @@ app.use(function(req, res) {
     res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
 
+app.use(function(err, req, res, next){
+    if(err.name === 'UnauthorizedError'){
+        res.status(401);
+        res.json({
+            "message" : err.name + ": " + err.message
+        });
+    }
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
