@@ -26,10 +26,12 @@
             return $http.post('/api/login', user).then(
 
                 function successCallback(data) {
-                    saveToken(data.token);
+                    saveToken(data.data.token);
+                    return data;
                 },
                 function errorCallback(e) {
                     console.log(e);
+                    return e;
                 }
             );
         };
@@ -53,7 +55,7 @@
         var currentUser = function(){
             if(isLoggedIn()){
                 var token = getToken(),
-                    payload = JSON.pase($window.atob(token.split('.')[1]));
+                    payload = JSON.parse($window.atob(token.split('.')[1]));
 
                 return {
                     email : payload.email,
