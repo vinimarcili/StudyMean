@@ -110,7 +110,7 @@ module.exports.reviewsCreate = function (req, res) {
                     if(err){
                         sendJSONresponse(res, 400, err);
                     }else{
-                        doAddReview(req, res, location);
+                        doAddReview(req, res, location, userName);
                     }
                 });
         }else{

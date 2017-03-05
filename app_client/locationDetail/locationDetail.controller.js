@@ -1,8 +1,12 @@
 (function(){
-    var locationDetailCtrl = function ($routeParams, $uibModal, loc8rData){
+    var locationDetailCtrl = function ($routeParams, $location, $uibModal, loc8rData, authentication){
         var vm = this;
 
         vm.locationid = $routeParams.locationid;
+
+        vm.isLoggedIn = authentication.isLoggedIn();
+
+        vm.currentPath = $location.path();
 
         loc8rData.locationById(vm.locationid)
             .then(
@@ -40,7 +44,7 @@
         };
     };
 
-    locationDetailCtrl.$inject = ['$routeParams', '$uibModal', 'loc8rData'];
+    locationDetailCtrl.$inject = ['$routeParams', '$location', '$uibModal', 'loc8rData', 'authentication'];
 
     angular
         .module('loc8rApp')
