@@ -1,6 +1,7 @@
 (function(){
 
     var authentication = function($http, $window){
+
         var saveToken = function(token){
             $window.localStorage['loc8r-token'] = token;
         };
@@ -12,10 +13,10 @@
         var register = function(user){
             return $http.post('/api/register', user).then(
 
-                function successCallback(data) {
-                    saveToken(data.token);
+                function successCallback(data){
+                    saveToken(data.data.token);
                 },
-                function errorCallback(e) {
+                function errorCallback(e){
                     console.log(e);
                 }
             );

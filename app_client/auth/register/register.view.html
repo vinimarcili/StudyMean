@@ -1,0 +1,41 @@
+<navigation></navigation>
+
+<div class="container">
+    <page-header content="vm.pageHeader"></page-header>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <p class="lead">
+                Já é um membro? Por favor faça <a href="/login?page={{vm.returnPage}}">Login</a>.
+            </p>
+            <form ng-submit="vm.onSubmit()">
+                <div role="alert" ng-show="vm.formError" class="alert alert-danger">{{vm.formError}}</div>
+
+                <div class="form-group">
+                    <label for="name">
+                        Nome:
+                    </label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Coloque seu nome aqui" ng-model="vm.credentials.name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        Email:
+                    </label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Coloque seu email aqui" ng-model="vm.credentials.email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        Senha:
+                    </label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Senha" ng-model="vm.credentials.password">
+                </div>
+
+                <button type="submit" class="btn btn-default">Cadastrar</button>
+
+            </form>
+        </div>
+    </div>
+
+    <footer-generic></footer-generic>
+</div>
